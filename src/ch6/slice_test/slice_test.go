@@ -35,10 +35,21 @@ func TestSliceCap(t *testing.T) {
 func TestSliceShareMemory(t *testing.T) {
 	year := [12]string{"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"}
 	Q2 := year[3:6]
+	//可以看出,虽然切片的时候看起来只切了3-6之前的3位,但由于后面的存储空间是连续的,所以容量为开始到连续空间的结束
 	t.Log(Q2, len(Q2), cap(Q2))
 	summer := year[5:8]
 	t.Log(summer, len(summer), cap(summer))
+	//将切片2的对应位改变之后会发现切片1和数组都受到了影响,说明是共享内存
 	summer[0] = "Unknow"
 	t.Log(Q2)
 	t.Log(year)
+}
+
+func TestSliceCompare(t *testing.T) {
+	//分别定义切片a和b,并将他们进行比较,可以看到校验通不过,不能这么进行比较
+	/*a := []int{1, 2, 3, 4}
+	b := []int{1, 2, 3, 4}
+	if a == b {
+		t.Log("a == b")
+	}*/
 }
