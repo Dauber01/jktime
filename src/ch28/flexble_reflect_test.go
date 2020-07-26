@@ -5,6 +5,22 @@ import (
 	"testing"
 )
 
+type Employee struct{
+	Name string
+	Age int
+}
+
+type Customer struct{
+	Name string
+	Age int
+}
+
+func TestFillNameAndAge(t *testing.T){
+	settings := map[string]interface{}{"Name" : "Mike", "Age" : 40}
+	e := Employee{}
+	if err := fill
+}
+
 func TestDeepEqual(t *testing.T) {
 	a := map[int]string{1: "one", 2: "two", 3: "three"}
 	b := map[int]string{1: "one", 2: "two", 3: "three"}
